@@ -1,10 +1,16 @@
+import 'package:appointmentsapp/firebase_options.dart';
 import 'package:appointmentsapp/screens/admin%20login%20screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:appointmentsapp/screens/UserSelectionScreen.dart';
 // Ensure this provider is defined
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     ChangeNotifierProvider(
       create: (context) => AdminAuthProvider(),
