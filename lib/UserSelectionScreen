@@ -1,0 +1,69 @@
+// user_selection_screen.dart
+import 'package:flutter/material.dart';
+import 'package:appointmentsapp/screens/AdminLoginScreen.dart'; // Ensure this exists
+import 'package:appointmentsapp/screens/DoctorLoginScreen.dart'; // Ensure this exists
+import 'package:appointmentsapp/screens/ClinicLoginScreen.dart'; // Ensure this exists
+import 'package:appointmentsapp/screens/PatientLoginScreen.dart'; // Ensure this exists
+
+class UserSelectionScreen extends StatelessWidget {
+  const UserSelectionScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.pink[100],
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'Welcome to the Clinic Appointment System',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AdminLoginScreen()),
+                  );
+                },
+                child: const Text('Admin Login'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const DoctorLoginScreen()),
+                  );
+                },
+                child: const Text('Doctor Login'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ClinicLoginScreen()),
+                  );
+                },
+                child: const Text('Clinic Login'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const PatientLoginScreen()),
+                  );
+                },
+                child: const Text('Patient Login'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+
+class AdminAuthProvider with ChangeNotifier {
+  // Declare variables for managing login state
+  bool _isLoading = false;
+  String? _error;
+  bool _isAuthenticated = false;
+
+  // Getters for the variables
+  bool get isLoading => _isLoading;
+  String? get error => _error;
+  bool get isAuthenticated => _isAuthenticated;
+
+  // Method to log in
+  Future<bool> login(String email, String password) async {
+    _isLoading = true;
+    _error = null;
+    notifyListeners();
+
+    // Simulate a network request
+    await Future.delayed(const Duration(seconds: 2));
+
+    // Example: Check email and password (replace with real authentication logic)
+    if (email == 'admin@clinic.com' && password == 'admin123') {
+      _isAuthenticated = true;
+    } else {
+      _error = 'Invalid email or password';
+    }
+
+    _isLoading = false;
+    notifyListeners();
+    return _isAuthenticated;
+  }
+
+  // Logout method
+  void logout() {
+    _isAuthenticated = false;
+    notifyListeners();
+  }
+}
